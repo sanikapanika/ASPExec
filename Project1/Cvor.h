@@ -3,8 +3,7 @@
 #define __CVOR_H__
 
 #include <iostream>
-#include "Osoba.h"
-#include "Student.h"
+#include"Osoba.h"
 using namespace std;
 
 //Genericki mehanizam prosljedjivanja generickog tipa podatka za klasu

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Cvor.h"
+#include"Osoba.h"
 using namespace std;
 
 template<class Tip>
@@ -28,18 +29,54 @@ public:
 		if (isPrazan()) {
 			throw exception("Greska. Nije moguce ukloniti elemenat iz prazne liste");
 		}
+		else {
+			Cvor<Tip>* t = prvi; //nova instanca pokazuje na prvi
+			prvi = prvi->next; //prvi sada pokazuje na drugi
+			Tip x = t->info; //nova varijabla X pokazuje na atribute od prvog clana liste
+			delete t;
+			return x;
+		}
 	}
 
 	void dodajPosljednji(Tip v) {
-
-
+		Cvor<Tip>* n = new Cvor<Tip>(NULL, v);
+		Cvor<Tip>* t = prvi;
+		if (t == NULL) {
+			prvi = n; 
+		}
+		else {
+			
+			while (t->next != NULL) {
+				t = t->next;
+			}
+			t->next = n;
+		}
 	}
-
 	Tip ukloniPosljednji() {
 		if (isPrazan()) {
 			throw exception("Greska. Nemoguce ukloniti elemenat iz prazne liste");
 		}
-		return x;
+		else {
+
+			Cvor<Tip>* t = prvi;
+			Cvor<Tip>* pt = NULL;
+
+			while (t->next != NULL) {
+				pt = t;
+				t = t->next;
+				
+			}
+			Tip x = t->info;
+			delete t; 
+			if (pt == NULL) {
+				prvi = NULL;
+			}
+			else {
+				pt->next = NULL;
+			}
+			return x;
+		}
+		
 	}
 
 	bool isPrazan() {
@@ -48,6 +85,11 @@ public:
 
 	void print() {
 		cout << "\nSTEK: " << endl;
+		Cvor<Tip>* t = prvi;
+			while (t != NULL) {
+				cout << t->info->ime << endl;
+				t = t->next;
+			}
 	}
 };
 

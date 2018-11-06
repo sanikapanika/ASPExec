@@ -2,15 +2,27 @@
 #include"Cvor.h"
 #include"Osoba.h"
 #include"Student.h"
+#include"Lista.h"
 using namespace std;
 
 void main() {
-	Osoba o1(21, "Sanin Alagic");
-	Osoba o2(25,"Ivan Leko");
-	Osoba o3(38,"Veca Vex");
-	Osoba o4(20,"Amra Zekan");
+	Osoba* o1=new Osoba(21, "Sanin Alagic");
+	Osoba* o2=new Osoba(25,"Ivan Leko");
+	Osoba* o3=new Osoba(38,"Tomislav Bradaric");
+	Osoba* o4=new Osoba(20,"Amra Zekan");
 
-	Cvor<int>* c1 = new Cvor<int>(NULL, 5);
+	Lista <Osoba*>* lista=new Lista<Osoba*>();
+	lista->dodajPrvi(o1);
+	lista->dodajPosljednji(o2);
+	lista->dodajPosljednji(o3);
+	lista->dodajPosljednji(o4);
+	lista->print();
+	lista->ukloniPosljednji();
+	lista->ukloniPrvi();
+	lista->print();
+
+
+	/*Cvor<int>* c1 = new Cvor<int>(NULL, 5);
 	Cvor<int>* c2 = new Cvor<int>(c1, 6);
 
 	cout << c1->info;
@@ -23,7 +35,7 @@ void main() {
 	cout << c4->info << endl;
 	
 	Cvor<Student*>* c1Student = new Cvor<Student*>(NULL, new Student(&o1, "IB160205", 1, 2));
-	c1Student->info->ispis();
+	c1Student->info->ispis();*/
 
 
 	/*Cvor c1(NULL,o1);
